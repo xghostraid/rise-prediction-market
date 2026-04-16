@@ -1,0 +1,23 @@
+RISE testnet deployment notes (public info only — never commit real private keys)
+
+Network
+  Chain ID:     11155931
+  RPC:            https://testnet.riselabs.xyz
+  Explorer:       https://explorer.testnet.riselabs.xyz
+
+Deployer (matches the test key used in this workspace session)
+  Address:        0x6dDA174AFF6ebf63D3Cf4bD47Ad0940cE1F0881D
+  Last RPC check: balance was 0 wei — deploy broadcasts fail until this address has testnet ETH.
+
+Simulated MarketFactory address (from forge dry-run / nonce — NOT on-chain until deploy succeeds)
+  0x72fa3eDD8b45240eAc9be5435EEd60fE87eC5381
+
+Commands (run locally; export PRIVATE_KEY in your shell only)
+  bash scripts/deploy-factory.sh
+  export MARKET_FACTORY=<MarketFactory from successful logs>
+  bash scripts/create-dummy-markets.sh
+
+Web UI
+  web/.env.local → NEXT_PUBLIC_MARKET_FACTORY=<same MarketFactory contract address>
+
+If your message meant something else to save, say what (e.g. “factory address only”, “env template”).
