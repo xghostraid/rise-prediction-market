@@ -1,5 +1,40 @@
 # Push this repo to GitHub
 
+## One-shot with GitHub CLI (`gh`) — run in **your** terminal
+
+`gh` is installed (e.g. via Homebrew). Cursor’s agent **cannot** complete login for you; you must authenticate once:
+
+```bash
+export PATH="/opt/homebrew/bin:$PATH"
+gh auth login
+```
+
+Then from this repo:
+
+```bash
+cd /Users/xace56/Downloads/rise-prediction-market
+chmod +x scripts/push-github.sh
+./scripts/push-github.sh
+```
+
+Optional: `./scripts/push-github.sh my-repo-name` to use a different repo name.
+
+If you see “remote origin already exists”:
+
+```bash
+git remote remove origin
+./scripts/push-github.sh
+```
+
+To push under an **organization** (e.g. `gsd-build`): create the repo on github.com first (empty), then:
+
+```bash
+git remote add origin https://github.com/gsd-build/rise-prediction-market.git
+git push -u origin main
+```
+
+---
+
 ## What we could (and could not) detect
 
 - **Cursor’s GitHub sign-in** does not put your username in a plain-text file inside the project, so it can’t be “looked up” from disk here.
