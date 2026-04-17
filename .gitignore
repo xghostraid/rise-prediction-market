@@ -13,6 +13,7 @@ web/.vercel/
 # Indexer (local secrets / deps)
 indexer/.env
 indexer/node_modules/
+indexer/dist/
 
 # OS / editor
 .DS_Store
