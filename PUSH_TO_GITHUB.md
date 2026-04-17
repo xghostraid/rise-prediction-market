@@ -1,8 +1,10 @@
 # Push this repo to GitHub
 
+**Canonical repo:** [github.com/xghostraid/rise-prediction-market](https://github.com/xghostraid/rise-prediction-market) (create it with the script below if it does not exist yet).
+
 ## One-shot with GitHub CLI (`gh`) — run in **your** terminal
 
-`gh` is installed (e.g. via Homebrew). Cursor’s agent **cannot** complete login for you; you must authenticate once:
+`gh` is installed (e.g. via Homebrew). Cursor’s agent **cannot** complete login for you; you must authenticate once as **`xghostraid`** (or whichever account should own the repo):
 
 ```bash
 export PATH="/opt/homebrew/bin:$PATH"
@@ -17,7 +19,8 @@ chmod +x scripts/push-github.sh
 ./scripts/push-github.sh
 ```
 
-Optional: `./scripts/push-github.sh my-repo-name` to use a different repo name.
+- Optional first argument: another repo name, e.g. `./scripts/push-github.sh my-repo-name` → creates **`xghostraid/my-repo-name`**.
+- Optional env: `GITHUB_OWNER=other-org ./scripts/push-github.sh` to publish under a different user or org (you need permission there).
 
 If you see “remote origin already exists”:
 
@@ -26,42 +29,23 @@ git remote remove origin
 ./scripts/push-github.sh
 ```
 
-To push under an **organization** (e.g. `gsd-build`): create the repo on github.com first (empty), then:
-
-```bash
-git remote add origin https://github.com/gsd-build/rise-prediction-market.git
-git push -u origin main
-```
-
 ---
 
-## What we could (and could not) detect
+## Manual: empty repo first, then push
 
-- **Cursor’s GitHub sign-in** does not put your username in a plain-text file inside the project, so it can’t be “looked up” from disk here.
-- Another folder on your machine uses this remote: `https://github.com/gsd-build/get-shit-done.git` — if **you** control the **`gsd-build`** org, you can create **`gsd-build/rise-prediction-market`** on GitHub and use the commands below with `gsd-build`. Otherwise use **your personal** username.
-
-## Easiest: Cursor UI (uses your connected GitHub account)
-
-1. Open the **`rise-prediction-market`** folder in Cursor.
-2. Open **Source Control** (branch icon).
-3. Use **Publish to GitHub** / **Publish Repository** (wording varies).  
-   That flow uses the GitHub account already linked in Cursor and creates the remote + push for you.
-
-## Manual: create empty repo, then push
-
-1. On GitHub: **New repository** → name e.g. `rise-prediction-market` → **no** README (you already have commits).
+1. On GitHub (as **xghostraid**): **New repository** → name `rise-prediction-market` → **no** README (you already have commits).
 2. In a terminal:
 
 ```bash
 cd /Users/xace56/Downloads/rise-prediction-market
-git remote add origin https://github.com/YOUR_USERNAME_OR_ORG/rise-prediction-market.git
+git remote add origin https://github.com/xghostraid/rise-prediction-market.git
 git push -u origin main
 ```
 
-Use **SSH** if you prefer:
+SSH:
 
 ```bash
-git remote add origin git@github.com:YOUR_USERNAME_OR_ORG/rise-prediction-market.git
+git remote add origin git@github.com:xghostraid/rise-prediction-market.git
 git push -u origin main
 ```
 
@@ -71,6 +55,17 @@ git push -u origin main
 git remote remove origin
 # then add again as above
 ```
+
+---
+
+## Cursor UI (uses your connected GitHub account)
+
+1. Open the **`rise-prediction-market`** folder in Cursor.
+2. Open **Source Control** (branch icon).
+3. Use **Publish to GitHub** / **Publish Repository**.  
+   Ensure the GitHub account in Cursor is **xghostraid** so the remote matches this doc.
+
+---
 
 ## What’s already committed
 

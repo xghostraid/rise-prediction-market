@@ -1,24 +1,40 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0b0e11;
+  --background: #0d1117;
   --foreground: #e6edf3;
-  --surface: #12161d;
-  --surface-hover: #1a2029;
+  --surface: #161b22;
+  --surface-hover: #21262d;
   --border: rgba(255, 255, 255, 0.08);
   --yes: #00d395;
   --no: #ff4e4e;
+  /* Polymarket-adjacent shell */
+  --pm-border: rgba(255, 255, 255, 0.08);
+  --pm-surface: #161b22;
+  --pm-yes: #00d395;
+  --pm-no: #ff5d5d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+.pm-scroll {
+  scrollbar-gutter: stable;
+}
+.pm-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.pm-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
 }

@@ -20,7 +20,7 @@ if [[ -z "${PRIVATE_KEY:-}" ]]; then
   echo "Required after deploy:"
   echo "  export MARKET_FACTORY=0x…     # from Deploy logs: \"MarketFactory:\" (not your wallet)"
   echo "  export ORACLE=0x…             # default: address from your PRIVATE_KEY"
-  echo "  export DUMMY_MARKET_COUNT=8   # default 5, max 25"
+  echo "  export DUMMY_MARKET_COUNT=50  # default 5, max 150"
   echo ""
   echo "Fund testnet ETH: https://faucet.testnet.riselabs.xyz"
   exit 1
