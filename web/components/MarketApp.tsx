@@ -442,19 +442,9 @@ export function MarketApp() {
     ) : null;
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
-      <PmTopBar />
-      <main className="mx-auto max-w-[1400px] px-4 pb-16 pt-6 lg:px-6">
-        <div className="mb-6 border-b border-[var(--pm-border)] pb-6">
-          <h1 className="text-[26px] font-semibold tracking-tight text-white lg:text-[30px]">
-            Markets
-          </h1>
-          <p className="mt-1 max-w-2xl text-[14px] text-[#8b949e]">
-            Trade outcome shares on RISE testnet — pick an event, buy Yes or No, resolve and
-            claim.
-          </p>
-        </div>
-
+    <div className="min-h-screen bg-[var(--pm-bg)]">
+      <PmTopBar category={category} onCategoryChange={setCategory} />
+      <main className="mx-auto max-w-[1320px] px-4 pb-16 pt-5 lg:px-5">
         {!m || !factoryAddress ? (
           <div className="rounded-2xl border border-dashed border-[var(--pm-border)] bg-[var(--pm-surface)]/40 px-6 py-16 text-center">
             <p className="text-[17px] font-medium text-white">No open markets</p>
@@ -474,8 +464,6 @@ export function MarketApp() {
               onSelect={onSelectMarket}
               search={search}
               onSearchChange={setSearch}
-              category={category}
-              onCategoryChange={setCategory}
             />
             <PmTradePanel
               factoryAddress={factoryAddress}

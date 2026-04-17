@@ -75,7 +75,7 @@ function PmStat({
   className?: string;
 }) {
   return (
-    <div className={`bg-[#161b22] px-4 py-3 ${className}`}>
+    <div className={`bg-[var(--pm-surface-2)] px-4 py-3 ${className}`}>
       <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[#6e7681]">
         {label}
       </p>
@@ -95,7 +95,7 @@ export function PmTradePanel(p: Props) {
       : p.collateralAddr;
 
   return (
-    <section className="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-[var(--pm-border)] bg-[#161b22] shadow-2xl shadow-black/40 xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)]">
+    <section className="flex min-h-0 flex-col overflow-hidden rounded-2xl border border-[var(--pm-border)] bg-[var(--pm-surface)] shadow-2xl shadow-black/50 xl:sticky xl:top-[5.5rem] xl:max-h-[calc(100vh-6rem)]">
       <div className="shrink-0 border-b border-[var(--pm-border)] px-4 py-3">
         <p className="font-mono text-[10px] leading-relaxed text-[#6e7681]">
           <span className="text-[#8b949e]">Factory</span>{" "}
@@ -189,7 +189,7 @@ export function PmTradePanel(p: Props) {
           </p>
         </div>
 
-        <div className="border-t border-[var(--pm-border)] bg-black/25 px-4 py-5 sm:px-5">
+        <div className="border-t border-[var(--pm-border)] bg-[var(--pm-bg)]/80 px-4 py-5 sm:px-5">
           <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#6e7681]">
             Trade
           </p>
@@ -199,7 +199,7 @@ export function PmTradePanel(p: Props) {
               <input
                 inputMode="decimal"
                 autoComplete="off"
-                className="rounded-xl border border-white/[0.1] bg-[#0d1117] px-4 py-3 text-[15px] text-white outline-none ring-[var(--pm-yes)]/30 focus:ring-2"
+                className="rounded-xl border border-white/[0.08] bg-[var(--pm-bg)] px-4 py-3 text-[15px] text-white outline-none ring-[var(--pm-yes)]/25 focus:ring-2"
                 value={p.amountStr}
                 onChange={(e) => p.onAmountChange(e.target.value)}
               />
@@ -231,7 +231,7 @@ export function PmTradePanel(p: Props) {
                 p.confirming ||
                 p.tradeDisabled
               }
-              className="rounded-xl bg-[var(--pm-yes)] py-3.5 text-[14px] font-semibold text-[#0d1117] shadow-lg shadow-[var(--pm-yes)]/20 hover:brightness-110 disabled:opacity-40"
+              className="rounded-xl bg-[var(--pm-yes)] py-3.5 text-[14px] font-bold text-white shadow-md shadow-[var(--pm-yes)]/25 hover:bg-[var(--pm-yes-hover)] disabled:opacity-40"
             >
               Buy Yes
             </button>
@@ -245,7 +245,7 @@ export function PmTradePanel(p: Props) {
                 p.confirming ||
                 p.tradeDisabled
               }
-              className="rounded-xl bg-[#e85d5d] py-3.5 text-[14px] font-semibold text-white shadow-lg shadow-[#e85d5d]/15 hover:brightness-110 disabled:opacity-40"
+              className="rounded-xl bg-[var(--pm-no)] py-3.5 text-[14px] font-bold text-white shadow-md shadow-[var(--pm-no)]/25 hover:bg-[var(--pm-no-hover)] disabled:opacity-40"
             >
               Buy No
             </button>
@@ -292,7 +292,7 @@ export function PmTradePanel(p: Props) {
               p.isPending ||
               p.confirming
             }
-            className="rounded-xl bg-white px-5 py-2.5 text-[13px] font-semibold text-[#0d1117] hover:bg-[#e6edf3] disabled:opacity-40"
+            className="rounded-xl bg-white px-5 py-2.5 text-[13px] font-semibold text-[#09090b] hover:bg-[#e4e4e7] disabled:opacity-40"
           >
             Claim
           </button>
