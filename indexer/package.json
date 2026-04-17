@@ -1,0 +1,25 @@
+{
+  "name": "rise-markets-indexer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "start": "node --enable-source-maps dist/main.js",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "postgres": "^3.4.7",
+    "viem": "^2.21.0",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^20",
+    "tsx": "^4.20.5",
+    "typescript": "^5"
+  }
+}
+

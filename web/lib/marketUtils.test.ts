@@ -5,6 +5,7 @@ import {
   parseBracketCategory,
   poolYesPercent,
   sanitizeQuestionPreview,
+  sortMarketRows,
   stripCategoryPrefix,
   validateDecimalAmount,
 } from "./marketUtils";
@@ -69,6 +70,38 @@ describe("validateDecimalAmount", () => {
     expect(validateDecimalAmount("-1").ok).toBe(false);
     expect(validateDecimalAmount("1e-3").ok).toBe(false);
     expect(validateDecimalAmount("0").ok).toBe(false);
+  });
+});
+
+describe("sortMarketRows", () => {
+  const mk = (addr: string, q: string, ty: bigint, tn: bigint, yesPct = 50) =>
+    ({
+      addr: addr as `0x${string}`,
+      question: q,
+      totalYes: ty,
+      totalNo: tn,
+      yesPct,
+    }) as const;
+
+  it("keeps order for new", () => {
+    const rows = [mk("0x0000000000000000000000000000000000000001", "a", 1n, 0n), mk("0x0000000000000000000000000000000000000002", "b", 100n, 0n)];
+    const out = sortMarketRows(rows, "new");
+    expect(out[0]?.addr).toBe("0x0000000000000000000000000000000000000001");
+  });
+
+  it("sorts by liquidity for trending", () => {
+    const rows = [mk("0x0000000000000000000000000000000000000001", "a", 1n, 0n), mk("0x0000000000000000000000000000000000000002", "b", 100n, 0n)];
+    const out = sortMarketRows(rows, "trending");
+    expect(out[0]?.addr).toBe("0x0000000000000000000000000000000000000002");
+  });
+
+  it("competitive puts near 50% yes first", () => {
+    const rows = [
+      mk("0x0000000000000000000000000000000000000001", "a", 50n, 50n, 50),
+      mk("0x0000000000000000000000000000000000000002", "b", 90n, 10n, 90),
+    ];
+    const out = sortMarketRows(rows, "competitive");
+    expect(out[0]?.yesPct).toBe(50);
   });
 });
 

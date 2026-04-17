@@ -15,6 +15,23 @@ export const factoryAbi = [
   },
 ] as const;
 
+export const orderbookFactoryAbi = [
+  {
+    type: "function",
+    name: "marketCount",
+    inputs: [],
+    outputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "marketById",
+    inputs: [{ name: "", type: "uint256", internalType: "uint256" }],
+    outputs: [{ name: "", type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+] as const;
+
 export const marketAbi = [
   {
     type: "function",
@@ -111,6 +128,160 @@ export const marketAbi = [
     type: "function",
     name: "betNo",
     inputs: [{ name: "amount", type: "uint256", internalType: "uint256" }],
+    outputs: [],
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "resolve",
+    inputs: [{ name: "yesWins", type: "bool", internalType: "bool" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "claim",
+    inputs: [],
+    outputs: [{ type: "uint256", internalType: "uint256" }],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "event",
+    name: "BetYes",
+    inputs: [
+      { name: "user", type: "address", indexed: true, internalType: "address" },
+      { name: "amount", type: "uint256", indexed: false, internalType: "uint256" },
+    ],
+  },
+  {
+    type: "event",
+    name: "BetNo",
+    inputs: [
+      { name: "user", type: "address", indexed: true, internalType: "address" },
+      { name: "amount", type: "uint256", indexed: false, internalType: "uint256" },
+    ],
+  },
+  {
+    type: "event",
+    name: "Resolved",
+    inputs: [
+      { name: "outcome", type: "uint8", indexed: false, internalType: "uint8" },
+      { name: "claimsOpenAt", type: "uint64", indexed: false, internalType: "uint64" },
+    ],
+  },
+  {
+    type: "event",
+    name: "Claimed",
+    inputs: [
+      { name: "user", type: "address", indexed: true, internalType: "address" },
+      { name: "payout", type: "uint256", indexed: false, internalType: "uint256" },
+    ],
+  },
+] as const;
+
+export const orderbookMarketAbi = [
+  {
+    type: "function",
+    name: "collateral",
+    inputs: [],
+    outputs: [{ type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "shareUnit",
+    inputs: [],
+    outputs: [{ type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "oracle",
+    inputs: [],
+    outputs: [{ type: "address", internalType: "address" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "tradingEndsAt",
+    inputs: [],
+    outputs: [{ type: "uint64", internalType: "uint64" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "claimDelayAfterResolve",
+    inputs: [],
+    outputs: [{ type: "uint64", internalType: "uint64" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "question",
+    inputs: [],
+    outputs: [{ type: "string", internalType: "string" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "outcome",
+    inputs: [],
+    outputs: [{ type: "uint8", internalType: "uint8" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "claimsOpenAt",
+    inputs: [],
+    outputs: [{ type: "uint64", internalType: "uint64" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "yesShares",
+    inputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [{ type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "noShares",
+    inputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [{ type: "uint256", internalType: "uint256" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "claimed",
+    inputs: [{ name: "", type: "address", internalType: "address" }],
+    outputs: [{ type: "bool", internalType: "bool" }],
+    stateMutability: "view",
+  },
+  {
+    type: "function",
+    name: "placeLimit",
+    inputs: [
+      { name: "side", type: "uint8", internalType: "uint8" },
+      { name: "price", type: "uint8", internalType: "uint8" },
+      { name: "size", type: "uint256", internalType: "uint256" },
+    ],
+    outputs: [{ type: "uint256", internalType: "uint256" }],
+    stateMutability: "payable",
+  },
+  {
+    type: "function",
+    name: "cancel",
+    inputs: [{ name: "id", type: "uint256", internalType: "uint256" }],
+    outputs: [],
+    stateMutability: "nonpayable",
+  },
+  {
+    type: "function",
+    name: "take",
+    inputs: [
+      { name: "makerOrderId", type: "uint256", internalType: "uint256" },
+      { name: "size", type: "uint256", internalType: "uint256" },
+    ],
     outputs: [],
     stateMutability: "payable",
   },

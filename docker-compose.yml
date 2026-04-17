@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: rise_markets
+    ports:
+      - "5432:5432"
+    volumes:
+      - rise_markets_pg:/var/lib/postgresql/data
+
+volumes:
+  rise_markets_pg:
+

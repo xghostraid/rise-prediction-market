@@ -52,6 +52,95 @@ export type MarketPreviewRow = {
   yesPct: number;
 };
 
+/** Browse row — mirrors polymarket.com “New · Trending · Popular · …” */
+export const BROWSE_SORT_TABS = [
+  { id: "new", label: "New" },
+  { id: "trending", label: "Trending" },
+  { id: "popular", label: "Popular" },
+  { id: "liquid", label: "Liquid" },
+  { id: "ending", label: "Ending Soon" },
+  { id: "competitive", label: "Competitive" },
+] as const;
+
+export type BrowseSortId = (typeof BROWSE_SORT_TABS)[number]["id"];
+
+/** Second topic strip — quick tags (polymarket.com-style). */
+export const PM_QUICK_TAGS = [
+  "Trending",
+  "Breaking",
+  "New",
+  "Politics",
+  "Sports",
+  "Crypto",
+  "Esports",
+  "Finance",
+  "Tech",
+  "AI",
+  "World",
+  "Economy",
+  "Elections",
+] as const;
+
+function poolVolumeWei(r: MarketPreviewRow): bigint {
+  return (r.totalYes ?? 0n) + (r.totalNo ?? 0n);
+}
+
+/** Higher pool = trending / liquid first */
+function cmpVolDesc(a: MarketPreviewRow, b: MarketPreviewRow): number {
+  const va = poolVolumeWei(a);
+  const vb = poolVolumeWei(b);
+  if (vb > va) return 1;
+  if (vb < va) return -1;
+  return 0;
+}
+
+function cmpAddr(a: MarketPreviewRow, b: MarketPreviewRow): number {
+  return a.addr.localeCompare(b.addr);
+}
+
+/** 0 = 50¢ yes (most “toss-up”); larger = more one-sided */
+function competitiveScore(r: MarketPreviewRow): number {
+  return Math.abs(50 - r.yesPct);
+}
+
+/**
+ * Sort filtered rows per browse tab. Every tab shows the **same** markets; order differs.
+ * “New” = factory enumeration order. No on-chain “end time” yet, so “Ending Soon” uses reverse order as a stand-in.
+ */
+export function sortMarketRows(
+  rows: MarketPreviewRow[],
+  sort: BrowseSortId,
+): MarketPreviewRow[] {
+  const copy = [...rows];
+  switch (sort) {
+    case "new":
+      return copy;
+    case "trending":
+      return copy.sort((a, b) => {
+        const c = cmpVolDesc(a, b);
+        return c !== 0 ? c : cmpAddr(a, b);
+      });
+    case "popular":
+      return copy.sort((a, b) => {
+        const c = cmpVolDesc(a, b);
+        if (c !== 0) return c;
+        return competitiveScore(b) - competitiveScore(a);
+      });
+    case "liquid":
+      return copy.sort(cmpVolDesc);
+    case "ending":
+      return copy.reverse();
+    case "competitive":
+      return copy.sort((a, b) => {
+        const d = competitiveScore(a) - competitiveScore(b);
+        if (d !== 0) return d;
+        return cmpVolDesc(a, b);
+      });
+    default:
+      return copy;
+  }
+}
+
 export function filterMarketRows(
   rows: MarketPreviewRow[],
   opts: { search: string; category: PmCategory },

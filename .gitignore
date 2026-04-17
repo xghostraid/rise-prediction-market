@@ -8,6 +8,11 @@ web/node_modules/
 web/.next/
 web/.env.local
 web/.env*.local
+web/.vercel/
+
+# Indexer (local secrets / deps)
+indexer/.env
+indexer/node_modules/
 
 # OS / editor
 .DS_Store

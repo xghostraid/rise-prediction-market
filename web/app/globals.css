@@ -59,3 +59,23 @@ body {
   background: rgba(0, 211, 149, 0.15);
   border-radius: 999px;
 }
+
+@keyframes pmMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.pm-marquee-track {
+  animation: pmMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pm-marquee-track {
+    animation: none;
+  }
+}

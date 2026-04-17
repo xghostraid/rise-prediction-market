@@ -2,6 +2,9 @@
 
 import type { ReactNode } from "react";
 import { zeroAddress } from "viem";
+import { MarketPriceChart } from "@/components/polymarket/MarketPriceChart";
+
+type PricePoint = { t: number; yesPct: number };
 
 type Props = {
   factoryAddress: `0x${string}`;
@@ -45,6 +48,9 @@ type Props = {
   isPending: boolean;
   confirming: boolean;
   confirmed: boolean;
+  /** On-chain replay and/or live session samples (see label). */
+  priceHistory?: PricePoint[];
+  priceChartLabel?: string;
 };
 
 function OddsBar({ yesPct }: { yesPct: number }) {
@@ -148,6 +154,16 @@ export function PmTradePanel(p: Props) {
               <span>Yes {p.fmt(p.totalYes)}</span>
               <span>No {p.fmt(p.totalNo)}</span>
             </div>
+          </div>
+          <div className="mt-5 space-y-2">
+            <MarketPriceChart
+              data={p.priceHistory ?? []}
+              label={p.priceChartLabel ?? "Implied Yes (session)"}
+            />
+            <p className="text-[11px] leading-relaxed text-[#6e7681]">
+              Prices are pool-implied (parimutuel), not an order book. Polymarket uses a CLOB; RISE
+              markets here settle from the YES/NO liquidity pool.
+            </p>
           </div>
         </div>
 

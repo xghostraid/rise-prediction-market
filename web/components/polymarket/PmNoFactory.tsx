@@ -10,7 +10,7 @@ type Props = {
 export function PmNoFactory({ factoryEnvInvalid, exampleUrl }: Props) {
   return (
     <div className="min-h-screen bg-[var(--pm-bg)]">
-      <PmTopBar category="All" onCategoryChange={() => {}} />
+      <PmTopBar compact />
       <div className="mx-auto max-w-xl px-4 pb-20 pt-10 lg:pt-14">
         <div className="rounded-2xl border border-[var(--pm-border)] bg-[var(--pm-surface)] p-8 shadow-2xl shadow-black/40">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--pm-yes)]">
