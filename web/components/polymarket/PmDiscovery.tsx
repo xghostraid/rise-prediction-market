@@ -45,16 +45,15 @@ export function PmDiscovery({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      {/* Hero search — polymarket.com-style prominent search */}
       <div className="shrink-0 pb-6">
         <h1 className="text-[28px] font-bold tracking-tight text-white md:text-[32px]">
           Markets
         </h1>
-        <p className="mt-1 text-[15px] text-[#a1a1aa]">
-          Trade opinion on RISE testnet — same Yes / No flow you know from prediction markets.
+        <p className="mt-1 text-[15px] text-[#8b949e]">
+          Binary markets on RISE — testnet liquidity, oracle resolution, on-chain claims.
         </p>
         <div className="relative mt-5">
-          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#71717a]">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#6e7681]">
             <SearchIcon />
           </span>
           <input
@@ -63,10 +62,10 @@ export function PmDiscovery({
             autoComplete="off"
             value={search}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full rounded-full border border-[var(--pm-border)] bg-[var(--pm-surface)] py-3.5 pl-12 pr-5 text-[16px] text-white placeholder:text-[#71717a] outline-none ring-[var(--pm-yes)]/20 focus:ring-2"
+            className="w-full rounded-full border border-[var(--pm-border)] bg-[var(--pm-surface)] py-3.5 pl-12 pr-5 text-[16px] text-white placeholder:text-[#6e7681] outline-none ring-[var(--pm-yes)]/20 focus:ring-2"
           />
         </div>
-        <p className="mt-3 text-[13px] text-[#71717a]">
+        <p className="mt-3 text-[13px] text-[#6e7681]">
           {rows.length} market{rows.length === 1 ? "" : "s"}
           {search.trim() ? " · filtered" : ""}
         </p>
@@ -75,7 +74,7 @@ export function PmDiscovery({
       {rows.length === 0 ? (
         <div className="flex flex-1 flex-col items-center justify-center rounded-2xl border border-dashed border-[var(--pm-border)] bg-[var(--pm-surface)]/50 py-24 text-center">
           <p className="text-[16px] font-semibold text-white">No markets match</p>
-          <p className="mt-2 max-w-sm text-[14px] text-[#a1a1aa]">
+          <p className="mt-2 max-w-sm text-[14px] text-[#8b949e]">
             Clear search or pick another topic in the bar above.
           </p>
         </div>
@@ -108,8 +107,8 @@ export function PmDiscovery({
                     onClick={() => onSelect(row.addr)}
                     className={`mb-2 flex w-full flex-col gap-3 rounded-xl border p-3 text-left transition sm:flex-row sm:items-center sm:gap-4 sm:p-3.5 ${
                       active
-                        ? "border-[var(--pm-yes)]/55 bg-[#1a1d2e] shadow-[0_0_0_1px_rgba(59,130,246,0.2)]"
-                        : "border-[var(--pm-border)] bg-[#141419] hover:border-white/[0.12] hover:bg-[var(--pm-surface-2)]"
+                        ? "border-[var(--pm-yes)]/50 bg-[#0f1915] shadow-[0_0_0_1px_rgba(0,211,149,0.22)]"
+                        : "border-[var(--pm-border)] bg-[var(--pm-surface)] hover:border-white/[0.12] hover:bg-[var(--pm-surface-2)]"
                     }`}
                   >
                     <div
@@ -124,8 +123,8 @@ export function PmDiscovery({
                     </div>
                     <div className="flex shrink-0 gap-2 sm:ml-auto">
                       <span
-                        className="flex min-h-[40px] min-w-[5.25rem] items-center justify-center rounded-lg bg-[var(--pm-yes)] text-[14px] font-bold tabular-nums text-white shadow-sm"
-                        style={{ boxShadow: "0 1px 0 rgba(0,0,0,0.2)" }}
+                        className="flex min-h-[40px] min-w-[5.25rem] items-center justify-center rounded-lg bg-[var(--pm-yes)] text-[14px] font-bold tabular-nums text-[#0b0e11] shadow-sm"
+                        style={{ boxShadow: "0 1px 0 rgba(0,0,0,0.15)" }}
                       >
                         Yes {yes}¢
                       </span>

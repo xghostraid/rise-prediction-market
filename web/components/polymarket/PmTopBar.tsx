@@ -14,13 +14,14 @@ export function PmTopBar({ category, onCategoryChange }: Props) {
       <div className="mx-auto flex max-w-[1320px] items-center justify-between gap-3 px-4 py-3 lg:px-5">
         <a href="/" className="group flex shrink-0 items-center gap-2.5 no-underline">
           <PmLogoMark />
-          <span className="text-[19px] font-bold tracking-tight text-white">
-            RISE<span className="font-semibold text-[#a1a1aa]">markets</span>
+          <span className="text-[19px] font-bold tracking-tight">
+            <span className="text-[var(--rise-primary)]">RISE</span>
+            <span className="font-semibold text-[#8b949e]">markets</span>
           </span>
         </a>
 
         <div className="hidden min-w-0 flex-1 justify-center px-6 md:flex">
-          <nav className="flex items-center gap-1 text-[13px] font-medium text-[#a1a1aa]">
+          <nav className="flex items-center gap-1 text-[13px] font-medium text-[#8b949e]">
             <span className="rounded-md px-2 py-1 text-white">Markets</span>
             <span className="text-[var(--pm-border)]">|</span>
             <a
@@ -39,7 +40,7 @@ export function PmTopBar({ category, onCategoryChange }: Props) {
         </div>
       </div>
 
-      {/* Category rail — same pattern as polymarket.com topic strip */}
+      {/* Category rail */}
       <div className="border-t border-[var(--pm-border)] bg-[var(--pm-bg)]">
         <div className="mx-auto max-w-[1320px] px-2">
           <div className="no-scrollbar flex gap-1 overflow-x-auto py-2 pl-2 pr-4">
@@ -52,8 +53,8 @@ export function PmTopBar({ category, onCategoryChange }: Props) {
                   onClick={() => onCategoryChange(c)}
                   className={`shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-semibold transition ${
                     active
-                      ? "bg-white text-[#09090b]"
-                      : "bg-transparent text-[#a1a1aa] hover:bg-white/[0.06] hover:text-white"
+                      ? "bg-[var(--rise-primary)] text-[#0b0e11]"
+                      : "bg-transparent text-[#8b949e] hover:bg-white/[0.06] hover:text-white"
                   }`}
                 >
                   {c}
@@ -70,10 +71,9 @@ export function PmTopBar({ category, onCategoryChange }: Props) {
 function PmLogoMark() {
   return (
     <div
-      className="flex h-9 w-9 items-center justify-center rounded-lg shadow-lg shadow-[#3b82f6]/20"
+      className="flex h-9 w-9 items-center justify-center rounded-lg shadow-lg shadow-[#00d395]/25"
       style={{
-        background:
-          "linear-gradient(145deg, #3b82f6 0%, #6366f1 45%, #8b5cf6 100%)",
+        background: "linear-gradient(145deg, #00e5a3 0%, #00d395 40%, #00a87a 100%)",
       }}
       aria-hidden
     >

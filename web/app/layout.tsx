@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "RISE Markets — prediction markets on RISE",
   description:
-    "Trade Yes/No on RISE testnet. Polymarket-style discovery, pool-weighted prices.",
+    "Trade Yes/No outcome shares on RISE testnet — pool-weighted prices, oracle resolution, on-chain claims.",
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[var(--pm-bg)] font-sans text-[#fafafa] antialiased">
+      <body className="min-h-full flex flex-col bg-[var(--pm-bg)] font-sans text-[#e6edf3] antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

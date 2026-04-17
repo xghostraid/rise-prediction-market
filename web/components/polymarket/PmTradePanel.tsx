@@ -231,7 +231,7 @@ export function PmTradePanel(p: Props) {
                 p.confirming ||
                 p.tradeDisabled
               }
-              className="rounded-xl bg-[var(--pm-yes)] py-3.5 text-[14px] font-bold text-white shadow-md shadow-[var(--pm-yes)]/25 hover:bg-[var(--pm-yes-hover)] disabled:opacity-40"
+              className="rounded-xl bg-[var(--pm-yes)] py-3.5 text-[14px] font-bold text-[#0b0e11] shadow-md shadow-[var(--pm-yes)]/30 hover:bg-[var(--pm-yes-hover)] disabled:opacity-40"
             >
               Buy Yes
             </button>

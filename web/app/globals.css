@@ -1,23 +1,31 @@
 @import "tailwindcss";
 
+/*
+ * RISE Chain theme — aligns with RISE docs / builder UX:
+ * mint primary, deep charcoal shell, warm red for opposing outcome.
+ */
 :root {
-  /* Polymarket-adjacent: blue Yes, rose No, zinc neutrals */
-  --background: #09090b;
-  --foreground: #fafafa;
-  --surface: #141419;
-  --surface-hover: #1c1c22;
+  --background: #0b0e11;
+  --foreground: #e6edf3;
+  --surface: #12161d;
+  --surface-hover: #1a2029;
   --border: rgba(255, 255, 255, 0.08);
-  --yes: #3b82f6;
-  --no: #f43f5e;
-  --pm-bg: #09090b;
-  --pm-surface: #141419;
-  --pm-surface-2: #1c1c22;
+  /* Semantic (trading) */
+  --yes: #00d395;
+  --no: #ff4e4e;
+  /* Layout tokens (same names as before; values = RISE) */
+  --pm-bg: #0b0e11;
+  --pm-surface: #12161d;
+  --pm-surface-2: #1a2029;
   --pm-border: rgba(255, 255, 255, 0.08);
-  --pm-yes: #3b82f6;
-  --pm-no: #f43f5e;
-  --pm-yes-hover: #2563eb;
-  --pm-no-hover: #e11d48;
-  --pm-muted: #a1a1aa;
+  --pm-yes: #00d395;
+  --pm-no: #ff4e4e;
+  --pm-yes-hover: #00e5a3;
+  --pm-no-hover: #ff6666;
+  --pm-muted: #8b949e;
+  /* Extra for glows / rings */
+  --rise-primary: #00d395;
+  --rise-primary-soft: rgba(0, 211, 149, 0.18);
 }
 
 @theme inline {
@@ -48,6 +56,6 @@ body {
   width: 6px;
 }
 .pm-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 211, 149, 0.15);
   border-radius: 999px;
 }
